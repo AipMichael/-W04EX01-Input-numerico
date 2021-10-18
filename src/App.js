@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import "./Component/Input";
+import Button from "./Component/Button";
+import Input from "./Component/Input";
+import React, { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [originalValue, setValue] = useState(0);
+
+    function addOne() {
+        if (originalValue < 10) {
+            setValue(originalValue + 1);
+        }
+    }
+    function substractOne() {
+        if (originalValue > 0) {
+            setValue(originalValue - 1);
+        }
+    }
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <Button text="-" operation={substractOne} />
+                <Input originalValue={originalValue} />
+                <Button text="+" operation={addOne} />
+            </header>
+        </div>
+    );
 }
 
 export default App;
